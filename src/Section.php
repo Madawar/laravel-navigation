@@ -22,7 +22,7 @@ class Section implements Node
     /** @var string[] */
     public array $attributes;
 
-    public function __construct(Node $parent, string $title = '', string $url = '')
+    public function __construct(Node $parent, string $title = '', string $url = '', array $attributes)
     {
         $this->parent = $parent;
 
@@ -30,7 +30,7 @@ class Section implements Node
         $this->url = $url;
 
         $this->visible = true;
-        $this->attributes = [];
+        $this->attributes = $attributes;
 
         $this->children = [];
     }
@@ -73,7 +73,7 @@ class Section implements Node
 
     public function hide(bool $hidden = true): self
     {
-        $this->visible = ! $hidden;
+        $this->visible = !$hidden;
 
         return $this;
     }
@@ -86,7 +86,7 @@ class Section implements Node
     /** @return Node[] */
     public function getParents(): array
     {
-        if (! $this->parent) {
+        if (!$this->parent) {
             return [];
         }
 
@@ -95,7 +95,7 @@ class Section implements Node
 
     public function getDepth(): int
     {
-        if (! $this->parent) {
+        if (!$this->parent) {
             return 0;
         }
 

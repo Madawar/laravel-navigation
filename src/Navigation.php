@@ -23,9 +23,9 @@ class Navigation implements Node
         $this->children = [];
     }
 
-    public function add(string $title = '', string $url = '', ?callable $configure = null): self
+    public function add(string $title = '', string $url = '', array $attributes, ?callable $configure = null): self
     {
-        $section = new Section($this, $title, $url);
+        $section = new Section($this, $title, $url, $attributes);
 
         if ($configure) {
             $configure($section);
@@ -49,7 +49,7 @@ class Navigation implements Node
     {
         $activeSection = $this->activeSection();
 
-        if (! $activeSection) {
+        if (!$activeSection) {
             return false;
         }
 
