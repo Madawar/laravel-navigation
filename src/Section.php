@@ -22,7 +22,7 @@ class Section implements Node
     /** @var string[] */
     public array $attributes;
 
-    public function __construct(Node $parent, string $title = '', string $url = '', array $attributes)
+    public function __construct(Node $parent, string $title = '', string $url = '', array $attributes = [])
     {
         $this->parent = $parent;
 
