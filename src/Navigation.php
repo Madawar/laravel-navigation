@@ -39,7 +39,7 @@ class Navigation implements Node
     public function addIf($condition, string $title = '', string $url = '', ?callable $configure = null): self
     {
         if ($this->resolveCondition($condition)) {
-            $this->add($title, $url, $configure);
+            $this->add($title, $url, [], $configure);
         }
 
         return $this;
