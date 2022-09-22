@@ -35,7 +35,7 @@ class Section implements Node
         $this->children = [];
     }
 
-    public function add(string $title = '', string $url = '', array $attributes, ?callable $configure = null): self
+    public function add(string $title = '', string $url = '', array $attributes = [], ?callable $configure = null): self
     {
         $section = new Section($this, $title, $url, $attributes);
 
@@ -48,7 +48,7 @@ class Section implements Node
         return $this;
     }
 
-    public function addIf($condition, string $title = '', string $url = '', array $attributes, ?callable $configure = null): self
+    public function addIf($condition, string $title = '', string $url = '', array $attributes = [], ?callable $configure = null): self
     {
         if ($this->resolveCondition($condition)) {
             $this->add($title, $url, $attributes, $configure);
